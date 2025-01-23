@@ -1,0 +1,468 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="My engineering portfolio">
+      
+      
+        <meta name="author" content="Manmeet Bhabra">
+      
+      
+        <link rel="canonical" href="https://manmeetbhabra.github.io/research_pages/high_order_adjoint/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Adjoint Based Aerodynamic Shape Optimization for High Order Methods - Manmeet Bhabra</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom_template.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#adjoint-based-aerodynamic-shape-optimization-for-high-order-methods" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Manmeet Bhabra" class="md-header__button md-logo" aria-label="Manmeet Bhabra" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Manmeet Bhabra
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Adjoint Based Aerodynamic Shape Optimization for High Order Methods
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Manmeet Bhabra" class="md-nav__button md-logo" aria-label="Manmeet Bhabra" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Manmeet Bhabra
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resume/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resume
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Research
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motivation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#our-research" class="md-nav__link">
+    <span class="md-ellipsis">
+      Our Research
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Our Research">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sample-results-symmetric-airfoil-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Results - Symmetric Airfoil Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further Details
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="adjoint-based-aerodynamic-shape-optimization-for-high-order-methods">Adjoint Based Aerodynamic Shape Optimization for High Order Methods<a class="headerlink" href="#adjoint-based-aerodynamic-shape-optimization-for-high-order-methods" title="Permanent link">&para;</a></h1>
+<p><em>Collaborators: Philip Zwanenburg and Prof. Siva Nadarajah</em></p>
+<h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link">&para;</a></h2>
+<figure style="width:65%">
+    <img src="../../assets/images/Research/McGill/CAD_Analysis.png">
+    <figcaption>Fig.1 - A schematic showing where the inaccuracies in representing shapes arise when transitioning between CAD software and Analysis (ex. CFD) and/or optimization software. CAD software represents the airfoil using NURBS basis functions resulting in the blue shapes. Analysis and optimization software instead represent shapes typically using polynomials resulting in the orange shapes. Transitioning between the two different function spaces results in inaccuracies.</figcaption>
+</figure>
+
+<p>A major bottleneck in the traditional aerodynamic shape optimization design process today is in interfacing with Computer Aided Design (CAD) software. CAD software will typically represent its objects and shapes using what are known as NURBS basis functions. On the other hand, analysis software (for instance computational fluid dynamics (CFD) software) and optimization programs (which will typically also be included in the same CFD software) traditionally use polynomial basis functions to represent shapes and boundaries. This discrepancy results in some key challenges and loss of accuracy. Specifically, when transitioning from the CAD software to the CFD/optimization software, we have to approximate the NURBS geometric model using polynomials and  this results in inaccuracies in representing the original shape. Once the model has been analyzed and optimized, we have to once again transition the object back to the CAD software so that it can be integrated with the larger design, placed into manufacturing drawings, etc. Due to the same discrepancies in shape parameterization, this step once again requires an approximation to the shape and results in its inexact representation (the above schematic visually shows how these issues arise in each step). Addressing these inaccuracies in shape parametrization is ultimately an important and relevant problem, and is needed to close this gap between CAD and analysis/optimization software in the typical engineering design cycle.</p>
+<h2 id="our-research">Our Research<a class="headerlink" href="#our-research" title="Permanent link">&para;</a></h2>
+<p>This project looked to address this issue and discrepancy in shape parametrization through looking at the NURBS-Enhanced Discontinuous Galerkin Method. At a high level, this is simply a numerical method that can be used in CFD applications for simulating fluid flows. It brings together two different approaches: (1) The NURBS-Enhanced Approach and (2) The Discontinuous Galerkin (DG) method:</p>
+<ul>
+<li>
+<p>The Discontinuous Galerkin method falls in the class of what are known as high-order methods for numerically solving PDEs. Compared to standard Finite Volume methods, DG methods differ in that they are able to allow for the numerical solution to the PDE to be solved with much higher accuracy. </p>
+</li>
+<li>
+<p>The NURBS-Enhanced part effectively augments the standard DG method by allowing for shapes that are represented using NURBS basis functions (as is done in CAD software) to be represented <strong>exactly</strong> in the DG solver. In this way, we are able to close the gap and remove the shape inaccuracy errors when transitioning from the CAD to the CFD solver.</p>
+</li>
+</ul>
+<p>As we were further interested in optimizing the shape for aerodynamic efficiency (ex. to minimize drag, maximize lift, etc.) this project looked additionally at merging adjoint based optimization with the NURBS-Enhanced DG solver. The adjoint method, at a high level, allows for a quick an efficient way to obtain the gradient of the cost function being minimized in the optimization problem (ex. drag) with respect to the parameters used to represent the shape. With these gradients in hand, any nonlinear gradient based optimization approach (ex. Sequential Quadratic Programming) can then be used to optimize the resulting shape (Fig. 2).</p>
+<figure style="width:75%">
+    <img src="../../assets/images/Research/McGill/adjoint_procedure.png">
+    <figcaption>Fig.2 - The standard workflow for adjoint-based shape optimization.</figcaption>
+</figure>
+
+<p>Our ultimate research goal was to demonstrate adjoint based aerodynamic shape optimization for the NURBS-Enhanced Discontinuous Galerkin (DG) method. Although our results were preliminary, they show promise for one approach to tackle the challenges with shape parametrization when transitioning between CAD and CFD software.</p>
+<h3 id="sample-results-symmetric-airfoil-optimization">Sample Results - Symmetric Airfoil Optimization<a class="headerlink" href="#sample-results-symmetric-airfoil-optimization" title="Permanent link">&para;</a></h3>
+<figure style="width:60%">
+    <img src="../../assets/images/Research/McGill/unstructured_mesh_ml2_p2_NACA0012_tests_reference.png">
+    <figcaption>Fig.3 - The unstructured mesh around the initial, unoptimized airfoil.</figcaption>
+</figure>
+
+<p>We show here sample results from our developed method for the problem of optimizing a symmetric airfoil in 2D. We consider in particular the problem of optimizing the airfoil to attain a target lift coefficient of 0.25 while constraining the pitching moment to have a value of -0.1255.  </p>
+<figure>
+    <img src="../../assets/images/Research/McGill/airfoil_results_big_profile.png">
+    <figcaption>Fig.4 - (Top) The initial and optimized airfoil profiles. (Bottom left) The convergence in the lift coefficient as a function of design iteration for each airfoil. (Bottom right) The drop in the cost function (the function we are minimizing in the optimization problem) vs. design iterations.</figcaption>
+</figure>
+
+<p>The optimized airfoil as well as the progression in the cost function and lift coefficient as a function of design iteration are shown in the above figure. We see that the trailing edge is slightly modified to give the airfoil the desired target lift while satisfying the pitching moment constraint. In these figures, there are several values of "P" reported as well. This corresponds to the accuracy of the NURBS-Enhanced DG solver used to simulate the flow. A higher value of "P" essentially results in a higher accuracy solver being used. </p>
+<h2 id="further-details">Further Details<a class="headerlink" href="#further-details" title="Permanent link">&para;</a></h2>
+<p>The explanation above contains a high level description of our methodology. For further details, please check:</p>
+<ul>
+<li>
+<p><a href="https://arc.aiaa.org/doi/abs/10.2514/6.2019-3197">This link to the AIAA conference paper --&gt;</a></p>
+</li>
+<li>
+<p><a href="../../assets/docs/McGill_research/AIAA_Paper___Aerodynamic_Shape_Optimization_for_the_NURBS_Enhanced_DG.pdf">If the link above cannot be accessed, alternatively access the full paper pdf at this link --&gt;</a></p>
+</li>
+</ul>
+<p>The code for this method has been written in C and builds upon a high order solver written by the McGill Computational Aerodynamics Group:</p>
+<ul>
+<li><a href="https://github.com/PhilipZwanenburg/DPGSolver">Check the code on Github at this link --&gt;</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

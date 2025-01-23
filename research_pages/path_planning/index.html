@@ -1,0 +1,463 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="My engineering portfolio">
+      
+      
+        <meta name="author" content="Manmeet Bhabra">
+      
+      
+        <link rel="canonical" href="https://manmeetbhabra.github.io/research_pages/path_planning/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Time-Optimal Path Planning under Harvesting Constraints - Manmeet Bhabra</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom_template.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#time-optimal-path-planning-under-harvesting-constraints" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Manmeet Bhabra" class="md-header__button md-logo" aria-label="Manmeet Bhabra" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Manmeet Bhabra
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Time-Optimal Path Planning under Harvesting Constraints
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Manmeet Bhabra" class="md-nav__button md-logo" aria-label="Manmeet Bhabra" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Manmeet Bhabra
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resume/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resume
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Research
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motivation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#our-research" class="md-nav__link">
+    <span class="md-ellipsis">
+      Our Research
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Our Research">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sample-case-time-optimal-path-planning-with-energy-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Case - Time Optimal Path Planning with Energy Constraints
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenges-and-next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenges and Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="time-optimal-path-planning-under-harvesting-constraints">Time-Optimal Path Planning under Harvesting Constraints<a class="headerlink" href="#time-optimal-path-planning-under-harvesting-constraints" title="Permanent link">&para;</a></h1>
+<p><em>Collaborators: Manan Doshi and Prof. Pierre Lermusiaux</em></p>
+<h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link">&para;</a></h2>
+<figure>
+    <img src="../../assets/images/Research/MIT/pp_motivation_compressed.png">
+    <figcaption>Fig.1 - Left: A solar powered AUV that could be used in energy optimal path planning. Right: The great pacific garbage patch, an example where optimal marine plastic cleanup could be applicable.</figcaption>
+</figure>
+
+<p>The past decades have seen a growing use of sea surface craft (sailboats, vessels, ships) and autonomous vehicles (propelled AUVs, ocean gliders, solar-vehicles, etc.) in marine applications ranging from military surveillance to scientific data collection. Central to the effective operation of all autonomous surface and underwater vehicles is efficient and accurate motion control which falls under the purview of path planning. Path planning, in the most general sense, corresponds to a set of rules to be provided to an autonomous robot for navigating from one configuration to another in some optimal fashion. The metric for optimality, moreover, is problem dependent and depends on the user specified objective of interest and can include minimizing travel time, minimizing energy use or maximizing vehicle safety.</p>
+<p>Increasingly, having autonomous vehicles collect/harvest external fields from the environment has grown in relevance. The applications in which this is important are numerous. For instance, in the case of energy optimal path planning where long endurance and low power are crucial, it is important to be able to optimally harvest energy (ex. solar energy) along the way and/or leverage the environment (ex. the velocity field and currents) to reduce energy expenditure. This idea of optimal field collection extends further than just energy and is applicable to problems such as path planning to optimally collect marine plastic pollution or oil spills as well.</p>
+<p>Our research goal has thus been simple: <strong>to derive exact time-optimal control equations that optimally account for harvesting environmental fields</strong>.</p>
+<h2 id="our-research">Our Research<a class="headerlink" href="#our-research" title="Permanent link">&para;</a></h2>
+<figure style="width:60%">
+    <img src="../../assets/images/Research/MIT/pp_schematic.png">
+    <figcaption>Fig.2 - The general problem description (note that energy has been used as the harvesting field but the choice of field to collect is completely arbitrary in our framework)</figcaption>
+</figure>
+
+<p>The figure above describes the key parameters involved in the problem that we aim to solve (the figure involves the case of energy collection but it is important to note that our methodology is equally applicable to harvest other types of fields (plastic, oil, etc.)). Our goal is to be able to optimally navigate a vehicle from a specified start point to a destination <strong>in minimal time under the constraint of having collected a specified minimum amount of the external field</strong>. Navigating in this environment is not simple as we must account for, first, the external velocity field (which may be dynamic) in which the vehicle is being advected. Second, we have to account for harvesting from the background field, which also may be dynamic!</p>
+<p>Using principles from optimal control theory, we have been able to derive <strong>PDE based schemes</strong> that account for harvesting as a constraint in the path planning process. The solutions obtained from our schemes are moreover <strong>globally optimal</strong>.  The following case shows an example of some the types of problems that we have been able to solve using our approach. </p>
+<h3 id="sample-case-time-optimal-path-planning-with-energy-constraints">Sample Case - Time Optimal Path Planning with Energy Constraints<a class="headerlink" href="#sample-case-time-optimal-path-planning-with-energy-constraints" title="Permanent link">&para;</a></h3>
+<div class="row" style="">
+  <div class="column" style="float:left; width:48%; padding-top: 11px;">
+    <img src="../../assets/images/Research/MIT/energy_flux_field.png">
+  </div>
+  <div class="column" style="float:left; width:50%; ">
+<!--     <img src="../../assets/images/Research/MIT/2D_env_vel_med_res_cropped_optimized.gif"> -->
+<video width="100%" autoplay loop muted playsinline>
+  <source src="../../assets/images/Research/MIT/2D_env_vel_low_res_cropped.mp4" type="video/mp4">
+</video>
+
+  </div>
+  <figcaption>Fig.3 - The external environment for the case of interest. Left: The energy input field, which is static. Right: The external velocity field along with the start point and moving target (star).</figcaption>
+</div>
+
+<p>This case considers the problem of path planning under energy constraints. We consider the situation where the autonomous vehicle travels at its fixed maximum speed but has freedom to control its heading when navigating. From a given start point, we must additionally plan a path in a highly dynamic flow field to intercept a <strong>moving target point</strong> (right subfigure in Fig.3). We can further harvest energy from some static input energy field (ex. a solar input field) and the input flux distribution is shown in the left subfigure of Fig. 3. The vehicle starts with 0.325 units of energy and it must reach the target with at least 0.6 units of energy in a minimal amount of time. Note also that since the vehicle speed is constant, its energy expenditure rate is assumed to be a fixed constant in this problem.</p>
+<!-- <figure>
+    <img src="../../assets/images/Research/MIT/combined_vids_low_res.gif">
+    <figcaption>Fig.4 - Left: The optimal path for the vehicle to take for this case. Right: The evolution of the energy of the vehicle as its traverses to the target.</figcaption>
+</figure> -->
+
+<video width="100%" autoplay loop muted playsinline>
+  <source src="../../assets/images/Research/MIT/combined_vids_very_low_res.mp4" type="video/mp4">
+</video>
+<figcaption>Fig.4 - Left: The optimal path for the vehicle to take for this case. Right: The evolution of the energy of the vehicle as its traverses to the target.</figcaption>
+
+<p>Fig. 4 shows the optimal path as returned from our approach for this problem at hand. We see that the vehicle stays as much as it can in regions with high energy input flux and it uses the external flow field to its advantage in order to reach the target quickly. It is important to reiterate that our PDE based scheme is able to find the <strong>global optimal solution</strong> to this path planning problem. <strong>No other path exists</strong> that can reach the target in less time while also having 0.6 units of energy when reaching the target.</p>
+<h2 id="challenges-and-next-steps">Challenges and Next Steps<a class="headerlink" href="#challenges-and-next-steps" title="Permanent link">&para;</a></h2>
+<p>We are further working on augmenting our schemes through various further steps. One such avenue is accounting for uncertainty in the path planning framework. In many cases, the external velocity field is uncertain and the harvesting field as well may be random. We are therefore looking at how to generate optimal paths in these environments with appropriate probabilistic bounds.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

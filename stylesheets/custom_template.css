@@ -1,0 +1,18 @@
+/*.md-sidebar--primary{
+	visibility: hidden;
+}*/
+
+figcaption {
+  font-style: italic;
+  text-align: center;
+  font-size: smaller;
+}
+
+.oneThird{
+    width:30%;
+    float:left;
+    margin:.5%;
+}
+.oneThird img{
+    width:100%;
+}
