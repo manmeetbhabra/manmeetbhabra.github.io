@@ -335,15 +335,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#challenges-and-next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      Challenges and Next Steps
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -367,17 +358,18 @@
     <figcaption>Fig.1 - Left: A solar powered AUV that could be used in energy optimal path planning. Right: The great pacific garbage patch, an example where optimal marine plastic cleanup could be applicable.</figcaption>
 </figure>
 
-<p>The past decades have seen a growing use of sea surface craft (sailboats, vessels, ships) and autonomous vehicles (propelled AUVs, ocean gliders, solar-vehicles, etc.) in marine applications ranging from military surveillance to scientific data collection. Central to the effective operation of all autonomous surface and underwater vehicles is efficient and accurate motion control which falls under the purview of path planning. Path planning, in the most general sense, corresponds to a set of rules to be provided to an autonomous robot for navigating from one configuration to another in some optimal fashion. The metric for optimality, moreover, is problem dependent and depends on the user specified objective of interest and can include minimizing travel time, minimizing energy use or maximizing vehicle safety.</p>
-<p>Increasingly, having autonomous vehicles collect/harvest external fields from the environment has grown in relevance. The applications in which this is important are numerous. For instance, in the case of energy optimal path planning where long endurance and low power are crucial, it is important to be able to optimally harvest energy (ex. solar energy) along the way and/or leverage the environment (ex. the velocity field and currents) to reduce energy expenditure. This idea of optimal field collection extends further than just energy and is applicable to problems such as path planning to optimally collect marine plastic pollution or oil spills as well.</p>
-<p>Our research goal has thus been simple: <strong>to derive exact time-optimal control equations that optimally account for harvesting environmental fields</strong>.</p>
+<p>The past decades have seen a growing use of sea surface craft (sailboats, vessels, ships) and autonomous vehicles (propelled AUVs, ocean gliders, solar-vehicles, etc.) in marine applications ranging from military surveillance to scientific data collection. Central to the effective operation of all autonomous surface and underwater vehicles is efficient and accurate motion control which falls under the purview of path planning. Path planning, in the most general sense, corresponds to a set of rules to be provided to an autonomous robot for navigating from one configuration to another in some optimal fashion. The metric for optimality, however, is problem-dependent and varies based on the user-specified objective, such as minimizing travel time, reducing energy consumption, or maximizing vehicle safety.</p>
+<p>Increasingly, having autonomous vehicles collect/harvest external fields from the environment has grown in relevance. The applications in which this is important are numerous. For instance, in the case of energy optimal path planning, where long endurance and low power are crucial, it is important to be able to optimally harvest energy (ex. solar energy) along the way and/or leverage the environment (ex. the velocity field and currents) to reduce energy expenditure. This idea of optimal field collection extends further than just energy and is applicable to problems such as path planning to optimally collect marine plastic pollution or oil spills as well.</p>
+<p>For this project, our research goal was simple: <strong>to derive exact time-optimal control equations that optimally account for harvesting environmental fields</strong>.</p>
 <h2 id="our-research">Our Research<a class="headerlink" href="#our-research" title="Permanent link">&para;</a></h2>
 <figure style="width:60%">
     <img src="../../assets/images/Research/MIT/pp_schematic.png">
     <figcaption>Fig.2 - The general problem description (note that energy has been used as the harvesting field but the choice of field to collect is completely arbitrary in our framework)</figcaption>
 </figure>
 
-<p>The figure above describes the key parameters involved in the problem that we aim to solve (the figure involves the case of energy collection but it is important to note that our methodology is equally applicable to harvest other types of fields (plastic, oil, etc.)). Our goal is to be able to optimally navigate a vehicle from a specified start point to a destination <strong>in minimal time under the constraint of having collected a specified minimum amount of the external field</strong>. Navigating in this environment is not simple as we must account for, first, the external velocity field (which may be dynamic) in which the vehicle is being advected. Second, we have to account for harvesting from the background field, which also may be dynamic!</p>
-<p>Using principles from optimal control theory, we have been able to derive <strong>PDE based schemes</strong> that account for harvesting as a constraint in the path planning process. The solutions obtained from our schemes are moreover <strong>globally optimal</strong>.  The following case shows an example of some the types of problems that we have been able to solve using our approach. </p>
+<p>The figure above illustrates the key parameters of the problem we aimed to solve (shown here for energy collection, though our methodology is equally applicable to harvesting other fields such as plastic or oil). Our objective was to optimally navigate a vehicle from a specified starting point to a destination <strong>in minimal time while meeting the constraint of collecting a specified minimum amount of the external field</strong>.</p>
+<p>This task is complex due to two main factors: (1) the external velocity field, which may be dynamic and affects the vehicle's movement, and (2) the harvesting process, which must account for the dynamic nature of the background field.</p>
+<p>Using principles from optimal control theory, we developed <strong>PDE-based schemes</strong> that incorporate harvesting as a constraint within the path planning process. These schemes yield <strong>globally optimal</strong> solutions. The example below demonstrates one of the problems we successfully addressed using this approach.</p>
 <h3 id="sample-case-time-optimal-path-planning-with-energy-constraints">Sample Case - Time Optimal Path Planning with Energy Constraints<a class="headerlink" href="#sample-case-time-optimal-path-planning-with-energy-constraints" title="Permanent link">&para;</a></h3>
 <div class="row" style="">
   <div class="column" style="float:left; width:48%; padding-top: 11px;">
@@ -404,9 +396,7 @@
 </video>
 <figcaption>Fig.4 - Left: The optimal path for the vehicle to take for this case. Right: The evolution of the energy of the vehicle as its traverses to the target.</figcaption>
 
-<p>Fig. 4 shows the optimal path as returned from our approach for this problem at hand. We see that the vehicle stays as much as it can in regions with high energy input flux and it uses the external flow field to its advantage in order to reach the target quickly. It is important to reiterate that our PDE based scheme is able to find the <strong>global optimal solution</strong> to this path planning problem. <strong>No other path exists</strong> that can reach the target in less time while also having 0.6 units of energy when reaching the target.</p>
-<h2 id="challenges-and-next-steps">Challenges and Next Steps<a class="headerlink" href="#challenges-and-next-steps" title="Permanent link">&para;</a></h2>
-<p>We are further working on augmenting our schemes through various further steps. One such avenue is accounting for uncertainty in the path planning framework. In many cases, the external velocity field is uncertain and the harvesting field as well may be random. We are therefore looking at how to generate optimal paths in these environments with appropriate probabilistic bounds.</p>
+<p>Fig. 4 shows the optimal path as returned from our approach for this problem at hand. We see that the vehicle stays for as long as it can in regions with high energy input flux and it uses the external flow field to its advantage in order to reach the target quickly. It is important to reiterate that our PDE-based scheme is able to find the <strong>global optimal solution</strong> to this path planning problem. <strong>No other path exists</strong> that can reach the target in less time while also having 0.6 units of energy when reaching the target.</p>
 
 
 
